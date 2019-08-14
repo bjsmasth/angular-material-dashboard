@@ -41,3 +41,9 @@
 .mat-icon-button{
   margin-left: 7px;
 }
+
+a.mat-menu-item {
+  outline: none;
+  text-decoration: none;
+  color: inherit;
+}

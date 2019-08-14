@@ -119,10 +119,24 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
-      "styleext": "css"
+      "styleext": "css",
+      "spec": false
     },
     "@schematics/angular:directive": {
-      "prefix": "app"
+      "prefix": "app",
+      "spec": false
+    },
+    "@schematics/angular:module": {
+      "spec": false
+    },
+    "@schematics/angular:service": {
+      "spec": false
+    },
+    "@schematics/angular:pipe": {
+      "spec": false
+    },
+    "@schematics/angular:class": {
+      "spec": false
     }
   }
 }
