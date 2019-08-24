@@ -10,7 +10,14 @@ import {
   MatMenuModule,
   MatCheckboxModule,
   MatIconModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatTableModule,
+  MatProgressSpinnerModule,
+  MatSortModule,
+  MatCardModule,
+  MatChipsModule,
+  MatDialogModule,
+  MatSelectModule, MatAutocompleteModule, MatGridListModule
 } from '@angular/material';
 
 import {AppComponent} from './app.component';
@@ -41,7 +48,10 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {JwtInterceptor} from './interceptor/jwt.interceptor';
 import {ErrorInterceptor} from './interceptor/error.interceptor';
 import {DatePipe} from '@angular/common';
-import { UsersComponent } from './dashboard/users/users.component';
+import {UsersComponent} from './dashboard/users/users.component';
+import {UsersFormDialogComponent} from './dashboard/forms/users/users.form';
+import { ChatComponent } from './chat/chat.component';
+import {DeviceDetectorModule} from 'ngx-device-detector';
 
 @NgModule({
   declarations: [
@@ -67,6 +77,8 @@ import { UsersComponent } from './dashboard/users/users.component';
     PanelsComponent,
     WizardComponent,
     UsersComponent,
+    UsersFormDialogComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,8 +93,19 @@ import { UsersComponent } from './dashboard/users/users.component';
     MatCheckboxModule,
     MatIconModule,
     ReactiveFormsModule,
-    MatPaginatorModule
+    MatTableModule,
+    MatProgressSpinnerModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatCardModule,
+    MatChipsModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatAutocompleteModule,
+    MatGridListModule,
+    DeviceDetectorModule.forRoot()
   ],
+  entryComponents: [UsersFormDialogComponent],
   providers: [
     SettingsService,
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},

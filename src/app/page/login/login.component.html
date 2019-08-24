@@ -22,22 +22,24 @@
                 <i class="material-icons">email</i>
                 <mat-form-field color="accent">
                   <input type="text" formControlName="email" matInput placeholder="Email address"/>
+                  <mat-error *ngIf="loginForm.controls.email.invalid">{{getErrorMessage('email')}}</mat-error>
                 </mat-form-field>
               </div>
               <div class="form-row">
                 <i class="material-icons">lock_outline</i>
                 <mat-form-field color="accent">
                   <input type="password" formControlName="password" matInput placeholder="Password"/>
+                  <mat-error *ngIf="loginForm.controls.password.invalid">{{getErrorMessage('password')}}</mat-error>
                 </mat-form-field>
               </div>
             </div>
             <div class="card-footer">
               <button type="submit" mat-button>LET'S GO</button>
             </div>
-            <div class="form-row" *ngIf="formSubmissionAttempt && errorResponse" style="display: block">
-              <span class="mat-error" *ngIf="errorResponse.errors.email">* {{ errorResponse.errors.email }}</span>
-              <span class="mat-error" *ngIf="errorResponse.errors.password">* {{ errorResponse.errors.password }}</span>
-            </div>
+<!--            <div class="form-row" *ngIf="formSubmissionAttempt && errorResponse" style="display: block">-->
+<!--              <span class="mat-error" *ngIf="errorResponse.errors.email">* {{ errorResponse.errors.email }}</span>-->
+<!--              <span class="mat-error" *ngIf="errorResponse.errors.password">* {{ errorResponse.errors.password }}</span>-->
+<!--            </div>-->
           </form>
 
         </div>

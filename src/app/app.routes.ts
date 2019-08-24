@@ -18,18 +18,20 @@ import {LockComponent} from './page/lock/lock.component';
 import {RegisterComponent} from './page/register/register.component';
 import {AuthGuard} from './helpers/AuthGaurd';
 import {UsersComponent} from './dashboard/users/users.component';
+import {ChatComponent} from './chat/chat.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'lock', component: LockComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
   {
     path: 'dashboard',
     component: RootComponent,
     canActivate: [AuthGuard],
     children: [
       {path: '', component: HomeComponent},
-      {path: 'users', component: UsersComponent},
+      {path: 'auth/users', component: UsersComponent},
       {path: 'profile', component: ProfileComponent},
       {path: 'table', component: TableComponent},
       {path: 'notification', component: NotificationComponent},

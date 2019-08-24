@@ -1,0 +1,30 @@
+<div class="container">
+  <span *ngIf="id">{{id}}</span>
+  <div class="row">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8">
+      <div class="center">
+        <video [srcObject]="remoteView" class="peerVideo" autoplay></video>
+        <video [srcObject]="selfView" autoplay class="userVideo"></video>
+      </div>
+      <button id="endCall" style="display: none;" (click)="endCurrentCall()">End Call</button>
+
+    </div>
+    <div class="col-md-2">
+      <div class="center">
+      </div>
+    </div>
+  </div>
+
+  <div id="list">
+    <ul id="users">
+      <li *ngFor="let user of users">
+        {{ user }}
+        <input type="button" style="float: right" value="call" (click)="callUser(user)" id="makeCall">
+      </li>
+    </ul>
+  </div>
+</div>
+<script></script>

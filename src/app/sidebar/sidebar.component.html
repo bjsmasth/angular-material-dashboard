@@ -21,7 +21,11 @@
             <ul class="nav">
               <li *ngFor="let subItem of menuItem.children" routerLinkActive #subrla="routerLinkActive" [ngClass]="subrla.isActive? 'active' : ''">
                 <a [routerLink]="[subItem.path]" [style.background-color]="subrla.isActive? color : 'transparent'" [style.color]="subrla.isActive? activeFontColor : normalFontColor" style="height: 43px;">
-                  <span style="margin-left: 5px; width: 21px;">{{subItem.icon}}</span>
+                  <span *ngIf="subItem.icon" style="margin-left: 5px; width: 21px;">{{subItem.icon}}</span>
+                  <span *ngIf="subItem.mat_icon" style="margin-left: 5px; width: 21px;">
+                              <i class="material-icons">{{subItem.mat_icon}}</i>
+
+                  </span>
                   <span>{{subItem.title}}</span>
                 </a>
               </li>

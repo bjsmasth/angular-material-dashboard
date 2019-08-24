@@ -1,14 +1,26 @@
+import {Role} from './rolesAndPermissions';
+
 export class User {
   id: number;
   email: string;
-  name: string;
+  username: string;
+  full_name: string;
+  first_name: string;
+  last_name: string;
   created_at: Date;
-  email_verified: Date;
+  roles = [ new Role() ];
+  email_verified_at: Date;
+  profile = new Profile();
 }
 
+export class Profile {
+  id: number;
+  about_me: string;
+  address: string;
+}
 export class UserPagination {
   current_page: number;
-  data = new User();
+  data = [ new User() ];
   first_page_url: URL;
   from: number;
   last_page: number;

@@ -12,9 +12,8 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  private loginForm: FormGroup;
-  private formSubmissionAttempt: boolean;
-  private errorResponse: BehaviorSubject<InvalidLogin>;
+  loginForm: FormGroup;
+  errorResponse: BehaviorSubject<InvalidLogin>;
 
   constructor(private fb: FormBuilder, private auth: AuthenticationService, private router: Router) {
   }
@@ -38,15 +37,26 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser() {
+
+    if (this.loginForm.invalid) {
+      return;
+    }
+
     const email = this.loginForm.get('email').value;
     const password = this.loginForm.get('password').value;
-
-    this.formSubmissionAttempt = true;
 
     this.auth.login(email, password).subscribe(response => {
       this.router.navigate(['dashboard']);
     }, errors => {
       this.errorResponse = errors
     });
+  }
+
+  getErrorMessage(ControlName: string): string {
+    const obj = this.loginForm.controls[ControlName];
+
+    return obj.hasError('required') ? 'You must enter a value' :
+      obj.hasError('email') ? 'Not a valid email' :
+        obj.hasError('minlength') ? `The value must be ${obj.errors.minlength.requiredLength} or greater` : '';
   }
 }

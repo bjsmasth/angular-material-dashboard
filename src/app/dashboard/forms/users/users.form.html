@@ -1,0 +1,119 @@
+<div class="container">
+  <div class="row" style="margin-top: 30px">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <i class="material-icons">perm_identity</i>
+        </div>
+        <div class="card-content">
+          <h4 class="card-title">{{form_action}} -
+            <small class="category">{{form_action ? 'Add new member in your company' : ''}}</small>
+          </h4>
+          <form [formGroup]="userForm" (ngSubmit)="submitUserForm()">
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field color="accent">
+                  <input matInput type="text" placeholder="First Name" formControlName="first_name">
+                  <mat-error *ngIf="userForm['controls'].first_name.invalid">{{getErrorMessage(userForm['controls'].first_name)}}</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field color="accent">
+                  <input matInput type="text" placeholder="Last Name" formControlName="last_name">
+                  <mat-error *ngIf="userForm['controls'].last_name.invalid">{{getErrorMessage(userForm['controls'].last_name)}}</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <mat-form-field color="accent">
+                  <input matInput type="text" placeholder="Username" formControlName="username">
+                  <mat-error *ngIf="userForm['controls'].username.invalid">{{getErrorMessage(userForm['controls'].username)}}</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="col-md-4">
+                <mat-form-field color="accent">
+                  <input matInput type="email" placeholder="Email Address" formControlName="email">
+                  <mat-error *ngIf="userForm['controls'].email.invalid">{{getErrorMessage(userForm['controls'].email)}}</mat-error>
+                </mat-form-field>
+              </div>
+              <div class="col-md-4">
+                <mat-form-field color="accent">
+                  <mat-label>Select an option</mat-label>
+                  <mat-select formControlName="roles" multiple>
+                    <mat-option *ngFor="let role of roles_options" [value]="role.id">{{role.display_name}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="userForm['controls'].roles.invalid">{{getErrorMessage(userForm['controls'].roles)}}</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+            <div formGroupName="profile">
+              <div formGroupName="address">
+                <div class="row">
+                  <div class="col-md-4">
+                    <mat-form-field color="accent">
+                      <input matInput type="text" placeholder="City" formControlName="city">
+                      <mat-error *ngIf="userForm['controls'].profile['controls'].address['controls'].city.invalid">{{getErrorMessage(userForm['controls'].profile['controls'].address['controls'].city)}}</mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4">
+                    <mat-form-field color="accent">
+                      <mat-select formControlName="country">
+                        <mat-option *ngFor="let country of countries" [value]="country.name">
+                          {{country.name}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="userForm['controls'].profile['controls'].address['controls'].country.invalid">{{getErrorMessage(userForm['controls'].profile['controls'].address['controls'].country)}}</mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4">
+                    <mat-form-field color="accent">
+                      <input matInput type="text" placeholder="Postcode" formControlName="postal_code">
+                      <mat-error
+                        *ngIf="userForm['controls'].profile['controls'].address['controls'].postal_code.invalid">{{getErrorMessage(userForm['controls'].profile['controls'].address['controls'].postal_code)}}</mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8">
+                    <mat-form-field color="accent">
+                      <input matInput type="text" placeholder="Street Address" formControlName="street_address">
+                      <mat-error
+                        *ngIf="userForm['controls'].profile['controls'].address['controls'].street_address.invalid">{{getErrorMessage(userForm['controls'].profile['controls'].address['controls'].street_address)}}</mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <label class="textarea-label">About Me</label>
+                  <mat-form-field color="accent">
+                    <textarea matInput formControlName="about_me"></textarea>
+                    <mat-error *ngIf="userForm['controls'].profile['controls'].about_me.invalid">{{getErrorMessage(userForm['controls'].profile['controls'].about_me)}}</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="row action-btn">
+              <button md-raised-button mat-button type="submit" class="btn btn-rose">{{ form_action | uppercase}}</button> &nbsp;
+              <button md-raised-button mat-button (click)="onCancel()" class="btn btn-rose">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card right-profile">
+        <div class="profile">
+          <img src="../../../assets/img/marc.jpg" alt="profile"/>
+        </div>
+        <h6>CEO / CO-FOUNDER</h6>
+        <h4></h4>
+        <p>Don't be scared of the truth because we need to restart the human foundation in truth And I love you like
+          Kanye loves Kanye I love Rick Owens’ bed design but the back is...</p>
+        <button mat-raised-button class="btn btn-rose btn-round">CHANGE</button>
+      </div>
+    </div>
+  </div>
+</div>

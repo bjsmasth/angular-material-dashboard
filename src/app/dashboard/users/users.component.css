@@ -36,3 +36,15 @@
 .card-title{
   padding-left: 80px;
 }
+
+table {
+  width: 100%;
+}
+
+.svg_icons{
+  transform: scale(2.1);
+  color: blue;
+}
+.float-right {
+  float: right;
+}
